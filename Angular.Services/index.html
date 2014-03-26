@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+
+<!-- Defining the angular world -->
+<body ng-app="app">
+
+    <div ng-controller="MainCtrl">
+
+        <ul>
+            <li ng-repeat="session in sessions">
+                {{session.name}} by {{session.speaker}} at {{name}}
+            </li>
+        </ul>
+
+    </div>
+
+
+    <script src="scripts/angular.js"></script>
+    <script type="text/javascript">
+
+        // Defining the angular world.
+        var app = angular.module('app', []);
+
+        // Same example as 'Angular.Controller'.
+        // Instead, the functionality to retrieve sessions is refactored out into a separate service object (separation of concerns).  
+        // The sessionService is injected into this controller (dependency injection)
+        app.controller('MainCtrl', function ($scope, sessionService) {
+            $scope.sessions = sessionService.getAll();
+        });
+
+        // Register the sessionService. Whoever needs it, just asks angular for it.
+        // Angular is responsible for constructing and maintaining this instance.
+        app.factory('sessionService', function () {
+            return {
+                getAll: function () {
+                    return [
+                     { name: 'SPA', speaker: 'Koen Jans' },
+                     { name: 'BreezeJS', speaker: 'Jan Wielemans' }
+                    ];
+                }
+            };
+        });
+
+    </script>
+</body>
+</html>

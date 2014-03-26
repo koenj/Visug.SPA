@@ -1,0 +1,9 @@
+﻿<span class="col-xs-10">
+    <button ng-disabled="appreciation <= 1" ng-click="thumbsDown()" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-thumbs-down"></span>
+    </button>
+    <span class="badge">{{appreciation}}</span>
+    <button ng-disabled="appreciation >= 5" ng-click="thumbsUp()" type="button" class="btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-thumbs-up"></span>
+    </button>
+</span>

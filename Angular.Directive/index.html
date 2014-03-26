@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+
+<!-- Defining the angular world -->
+<body ng-app="app">
+
+    <div ng-controller="MainCtrl">
+
+        <ul>
+            <li ng-repeat="session in sessions">
+                <appreciation-button appreciation="session.appreciation"></appreciation-button>
+                {{session.name}} by {{session.speaker}} ({{session.appreciation}})
+                <button type="button" ng-click="showAppreciation(session)">Show Appreciation</button>
+            </li>
+        </ul>
+
+    </div>
+
+
+    <script src="scripts/angular.js"></script>
+    <script type="text/javascript">
+
+        // Defining the angular world.
+        var app = angular.module('app', []);
+
+        // Creating a custom html tag
+        app.directive('appreciationButton', function () {
+            return {
+                // only use this directive as an (E)lement, not as an (A)trribute or (C)lass
+                restrict: 'E',
+                replace: true,
+                // this is the actual content of the directive (can be placed in it's own html file)
+                template: '<div><button ng-click="up()">+</button> {{appreciation}} <button ng-click="down()">-</button></div>',
+                // this directive will have it's own isolated scope.
+                link: function (scope, element, attributes) {                    
+                    scope.up = function () {
+                        scope.appreciation++;
+                    };
+                    scope.down = function () {
+                        scope.appreciation--;
+                    };
+                },
+                // this directive will have it's own isolated scope.
+                // the appreciation property of this scope is synced with the appreciation that is passed in the binding (in this case event.appreciation).
+                scope: {
+                    appreciation: '='
+                }
+            };
+        });
+        app.controller('MainCtrl', function ($scope) {
+            $scope.sessions = [
+               { id: 1, name: 'SPA', speaker: 'Koen Jans', appreciation: 3 },
+               { id: 2, name: 'BreezeJS', speaker: 'Jan Wielemans', appreciation: 4 }
+            ];
+            $scope.showAppreciation = function (session){
+                alert(session.appreciation);
+            }
+        });
+
+
+    </script>
+</body>
+</html>

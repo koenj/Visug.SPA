@@ -1,0 +1,26 @@
+﻿<div class="container-fluid">
+    
+    
+    <div class="panel">
+        <div class="panel-title">
+            Filter: <input type="text" ng-model="generalFilter" />
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div ng-repeat="player in players |  filter: generalFilter" class="col-md-3">
+                    <a ng-href="#players/{{player.id}}">
+                        <span>
+                            <img class="img-rounded" ng-src="{{player.imageUrl}}" />
+                            <h5>
+                                {{player.firstName}} <b>{{player.lastName}}</b>
+                            </h5>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+   
+</div>

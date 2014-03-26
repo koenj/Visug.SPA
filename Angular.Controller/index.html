@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<!-- Defining the angular world -->
+<body ng-app="app">
+
+    <!--
+         This portion of the page uses the MainCtrl.
+         All binding happens to the MainCtrl's $scope object.
+    -->
+    <div ng-controller="MainCtrl">
+
+        <!-- the 'name' property is set on the $scope by the MainCtrl. So the intial value will already be there. -->
+        Conference:<input ng-model="name" type="text" /> <br />
+
+        <!--
+            Methods can be bound, just like properties.
+            ~ WPF / Silverlight commands
+        -->
+        <button type="button" ng-click="sayHello()">Say Hello</button>
+        <br />
+        <br />
+        <ul>
+            <li ng-repeat="session in sessions">
+                <!-- $scope inheritance, notice how the 'name' property from the parent scope is accessed here. -->
+                {{session.name}} by {{session.speaker}} at {{name}}
+            </li>
+        </ul>
+
+    </div>
+
+
+    <script src="scripts/angular.js"></script>
+    <script type="text/javascript">
+
+        // Defining the angular world.
+        var app = angular.module('app', []);
+
+        // Creating a Controller.
+        // Angular will pass in the $scope object. Bindings will happen to this $scope object.
+        // The controller is responsible for populating the $scope object.
+        app.controller('MainCtrl', function ($scope) {
+            $scope.name = 'visug';
+            $scope.sayHello = function () {
+                alert('hello ' + $scope.name);
+            };
+            $scope.sessions = [
+                { id: 1, name: 'SPA', speaker: 'Koen Jans', appreciation: 3 },
+                { id: 2, name: 'BreezeJS', speaker: 'Jan Wielemans', appreciation: 4 }
+            ];
+        });
+
+    </script>
+</body>
+</html>

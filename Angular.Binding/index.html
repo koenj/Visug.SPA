@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .highlight {
+            background: gold;
+        }
+    </style>
+</head>
+<body ng-app>
+
+
+    Name: <input type="text" ng-model="name" /> <br />
+    <!-- basic binding -->
+    Hello {{name}}
+    <!-- binding with an angular filter ~ WPF / SL IValueConverter -->
+    Hello {{name | uppercase}}
+    <!-- binding on the visibility of the span element -->
+    <span ng-show="name == 'visug'">Hello {{name}}</span>
+    <!-- binding on the style / class of the span element -->
+    Hello {{name}} <span ng-class="{highlight : name == 'visug'}">, nice to meet you</span>
+
+    <script src="scripts/angular.js"></script>
+    
+    
+    <!-- This is what the vanilla javascript might look like just to do the binding  -->
+    <!--Name: <input id="nameField" type="text" /> <br />
+    Hello <span  id="nameFeedback"></span>
+
+    <script type="text/javascript">
+        var nameField = document.getElementById('nameField');
+        var nameFeedback = document.getElementById('nameFeedback');
+        nameField.addEventListener('input', function (ev) {
+            while (nameFeedback.firstChild)
+                nameFeedback.removeChild(nameFeedback.firstChild);
+            nameFeedback.appendChild(document.createTextNode(nameField.value));
+        });
+    </script>-->
+
+</body>
+</html>

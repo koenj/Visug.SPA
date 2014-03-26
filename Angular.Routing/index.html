@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+
+<!-- Defining the angular world -->
+<body ng-app="app">
+
+    <a href="#sessions">Sessions</a>
+    <a href="#about">About</a>
+
+    <!--
+        Routing happens client-side. This index page never gets refreshed.
+        When navigating to a route, display the route's content here.
+        This ng-view is a placeholder.
+    -->
+    <div ng-view></div>
+
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script type="text/javascript">
+
+        // Defining the angular world.
+        var app = angular.module('app', ['ngRoute']);
+
+        // Configure the routing
+        app.config(function ($routeProvider) {
+            // When navigating to about, display the about page.
+            $routeProvider.when('/about', {
+                templateUrl: 'about.html'
+            });
+            // When navigating to sessions, display the sessions page.
+            // Additional, define the controller to be used for this page.
+            $routeProvider.when('/sessions', {
+                templateUrl: 'sessions.html',
+                controller: function ($scope) {
+                    $scope.name = 'visug';
+                    $scope.sayHello = function () {
+                        alert('hello ' + $scope.name);
+                    };
+                    $scope.sessions = [
+                        { id: 1, name: 'SPA', speaker: 'Koen Jans' },
+                        { id: 2, name: 'BreezeJS', speaker: 'Jan Wielemans' }
+                    ];
+                }
+            });
+            // Routing with $routeParams.
+            // When navigating to /session/1, show the first session
+            $routeProvider.when('/sessions/:sessionId', {
+                templateUrl: 'session.html',
+                controller: function ($scope, $routeParams) {
+                    $scope.sessionId = $routeParams.sessionId;
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

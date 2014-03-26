@@ -1,0 +1,24 @@
+﻿    
+    
+    <div class="content">
+        <span>
+            <input class="form-control" placeholder="Search" style="margin: 20px" type="text" ng-model="generalFilter" />
+        </span>
+        <div class="container-fluid">
+            <div>
+                <!-- Using Angular's built-in filter to filter the players list by lastname, based on generalFilter -->
+                <div ng-repeat="player in players |  filter: {lastName: generalFilter}" class="col-md-3" style="margin-bottom: 40px">
+                    <a ng-href="#players/{{player.id}}">
+                        <span>
+                            <img width="120" class="img-rounded" ng-src="{{player.imageUrl}}" />
+                            <h5>
+                                {{player.firstName}} <b>{{player.lastName}}</b>
+                            </h5>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+

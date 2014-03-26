@@ -1,0 +1,61 @@
+﻿<div class="content">
+
+    <h4>{{playerProfile.player.firstName | uppercase}} {{playerProfile.player.lastName | uppercase}}</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-2">
+            <img class="img-rounded" ng-src="{{playerProfile.player.imageUrl}}" />
+        </div>
+
+        <!--http://www.ng-newsletter.com/posts/validations.html-->
+        <form class="form-horizontal col-md-8" name="playerForm" ng-submit="save()">
+            <div ng-class="{'form-group': true,'has-error': playerForm.currentTeam.$dirty && playerForm.currentTeam.$invalid}">
+                <label for="currentTeam" class="control-label col-xs-2">Team</label>
+                <div class="col-xs-10">
+                    <input type="text" class="form-control" placeholder="Current team" name="currentTeam" ng-model="playerProfile.currentTeam" ng-minlength=3 ng-maxlength=50 required />
+                    <!-- Show some validation details when this input is invalid. -->
+                    <span ng-show="playerForm.currentTeam.$dirty && playerForm.currentTeam.$invalid" class="form-control-feedback col-xs-10">
+                        Current team should have from 3 up to 50 characters.
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="selections" class="control-label col-xs-2">Selections</label>
+                <div class="col-xs-10">
+                    <input type="number" class="form-control" placeholder="Selections" name="selections" ng-model="playerProfile.nbSelections" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="goals" class="control-label col-xs-2">Goals</label>
+                <div class="col-xs-10">
+                    <input type="number" class="form-control" placeholder="Goals" name="goals" ng-model="playerProfile.nbGoals" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="length" class="control-label col-xs-2">Length</label>
+                <div class="col-xs-10">
+                    <input type="number" class="form-control" placeholder="Length" name="length" ng-model="playerProfile.length" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="weight" class="control-label col-xs-2">Weight</label>
+                <div class="col-xs-10">
+                    <input type="number" class="form-control" placeholder="Weight" name="weight" ng-model="playerProfile.weight" required />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="appreciation" class="control-label col-xs-2">Appreciation</label>
+                <!-- Our own custom directive. Notice how readable this html is. -->
+                <appreciation-button name="appreciation" appreciation="playerProfile.appreciation"></appreciation-button>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <!-- Only enable save if the form is valid, and if something has actually changed -->
+                    <button type="submit" ng-disabled="playerForm.$invalid || !playerForm.$dirty" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

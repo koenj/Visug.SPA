@@ -1,0 +1,10 @@
+﻿<div>
+    Sessions 
+    
+    <ul>
+        <li ng-repeat="session in sessions">
+            <!-- Routing with parameters -->
+            <a ng-href="#sessions/{{session.id}}"> {{session.name}} by {{session.speaker}} at {{name}}</a>
+        </li>
+    </ul>
+</div>

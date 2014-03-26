@@ -1,0 +1,78 @@
+﻿html,
+body {
+    height: 100%;
+    padding-top: 50px;
+    color: rgb(226, 226, 226);
+    font-family: verdana;
+    padding-bottom: 0;
+    background: url(/Content/Images/bg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-size: cover;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -40px;
+}
+
+#push,
+#footer {
+    height: 40px;
+}
+
+#footer {
+    background-color: black;
+}
+
+    #footer div {
+        color: rgb(209, 204, 204);
+        font-size: 10pt;
+        text-align: center;
+        line-height: 40px;
+    }
+
+    #footer a {
+        color: gray;
+    }
+
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+
+div.content {
+    -ms-opacity: 0.79;
+    opacity: 0.79;
+    background: black;
+    padding: 20px;
+}
+
+div.busy {
+    -ms-opacity: 0.5;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: gray;
+}
+
+input.ng-invalid {
+    border: 1px solid rgb(151, 7, 7);
+}
