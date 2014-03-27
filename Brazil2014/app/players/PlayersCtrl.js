@@ -6,8 +6,8 @@
         // Using the playerService to get the players.
         // Single responsibility: it's not the Controllers task to do this.
         function PlayersCtrl($scope, playerService) {
-            playerService.getAll().then(function (data) {
-                return $scope.players = data;
+            playerService.getAll().then(function (players) {
+                return $scope.players = players;
             });
         }
         return PlayersCtrl;

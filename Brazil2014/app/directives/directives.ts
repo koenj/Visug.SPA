@@ -2,8 +2,7 @@
 
     // This directive will dynamically apply the given css class whenever the route specified in the href is active.
     app.directive('routeActiveClass', ($location: ng.ILocationService) => {
-        var ddo: ng.IDirective;
-        ddo = {
+        return <ng.IDirective>{
             link: (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes) => {
                 var routeActiveClass = attrs['routeActiveClass'];
                 var href = attrs['href'];
@@ -22,7 +21,6 @@
                 });
             }
         };
-        return ddo;
     });
 
     // Typed scope for the appreciationButton directive
@@ -34,8 +32,7 @@
 
     // This directive will show the appreciation buttons.
     app.directive('appreciationButton', () => {
-        var ddo: ng.IDirective;
-        ddo = {
+        return <ng.IDirective>{
             restrict: 'E',
             templateUrl: 'directives/appreciationButton.html',
             scope: {
@@ -52,7 +49,6 @@
                 };
             }
         };
-        return ddo;
     });
 
 } 

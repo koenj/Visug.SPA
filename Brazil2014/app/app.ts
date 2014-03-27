@@ -6,13 +6,13 @@
     // Configure the routes
     app.config(($routeProvider: ng.route.IRouteProvider) => {
         $routeProvider
-            .when('/players', {
+            .when('/players', <ng.route.IRoute>{
                 templateUrl: 'players/players.html',
                 // Angular is responsible for creating the $scope.
                 // Note how we use dependency injection to get the playerService
                 controller: ($scope: IPlayerScope, playerService: IPlayerService) => new PlayersCtrl($scope, playerService)
             })
-            .when('/players/:playerId', {
+            .when('/players/:playerId', <ng.route.IRoute>{
                 templateUrl: 'players/playerProfile.html',
                 // Angular is responsible for creating the $scope.
                 // Note how we use dependency injection to get Angular's built-in $location service and our own playerService

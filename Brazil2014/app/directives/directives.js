@@ -2,8 +2,7 @@
 (function (Brazil2014) {
     // This directive will dynamically apply the given css class whenever the route specified in the href is active.
     Brazil2014.app.directive('routeActiveClass', function ($location) {
-        var ddo;
-        ddo = {
+        return {
             link: function (scope, element, attrs) {
                 var routeActiveClass = attrs['routeActiveClass'];
                 var href = attrs['href'];
@@ -27,15 +26,13 @@
                 });
             }
         };
-        return ddo;
     });
 
     
 
     // This directive will show the appreciation buttons.
     Brazil2014.app.directive('appreciationButton', function () {
-        var ddo;
-        ddo = {
+        return {
             restrict: 'E',
             templateUrl: 'directives/appreciationButton.html',
             scope: {
@@ -52,7 +49,6 @@
                 };
             }
         };
-        return ddo;
     });
 })(Brazil2014 || (Brazil2014 = {}));
 //# sourceMappingURL=directives.js.map

@@ -11,7 +11,7 @@
         // Single responsibility: it's not the Controllers task to do this.
         constructor($scope: IPlayerScope, playerService: IPlayerService) {
             playerService.getAll()
-                        .then(data => $scope.players = data);
+                         .then(players => $scope.players = players);
         }
 
     }
