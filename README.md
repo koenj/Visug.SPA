@@ -5,8 +5,7 @@ This talk was given on 27/03/2014 at Microsoft Belgium and focuses on AngularJS 
 
 
 To run these samples, you'll need:
-* Visual Studio 2013
-* Typescript for Visual Studio (http://www.microsoft.com/en-us/download/confirmation.aspx?id=34790)
+* Visual Studio 2013, update 2
 
 
 Optionally:
