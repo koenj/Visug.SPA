@@ -11,7 +11,7 @@
 
         <ul>
             <li ng-repeat="session in sessions">
-                <appreciation-button appreciation="session.appreciation"></appreciation-button>
+                <appreciation-button appreciation="session.appreciation" ></appreciation-button>
                 {{session.name}} by {{session.speaker}} ({{session.appreciation}})
                 <button type="button" ng-click="showAppreciation(session)">Show Appreciation</button>
             </li>
@@ -33,14 +33,13 @@
                 restrict: 'E',
                 replace: true,
                 // this is the actual content of the directive (can be placed in it's own html file)
-                template: '<div><button ng-click="up()">+</button> {{appreciation}} <button ng-click="down()">-</button></div>',
-                // this directive will have it's own isolated scope.
-                link: function (scope, element, attributes) {                    
-                    scope.up = function () {
-                        scope.appreciation++;
+                template: '<span><button ng-click="up()">+</button> {{appreciation}} <button ng-click="down()">-</button></span>',
+                controller: function ($scope) {
+                    $scope.up = function () {
+                        $scope.appreciation++;
                     };
-                    scope.down = function () {
-                        scope.appreciation--;
+                    $scope.down = function () {
+                        $scope.appreciation--;
                     };
                 },
                 // this directive will have it's own isolated scope.
@@ -50,12 +49,13 @@
                 }
             };
         });
+
         app.controller('MainCtrl', function ($scope) {
             $scope.sessions = [
                { id: 1, name: 'SPA', speaker: 'Koen Jans', appreciation: 3 },
                { id: 2, name: 'BreezeJS', speaker: 'Jan Wielemans', appreciation: 4 }
             ];
-            $scope.showAppreciation = function (session){
+            $scope.showAppreciation = function (session) {
                 alert(session.appreciation);
             }
         });
